@@ -1,351 +1,807 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Gửi cô nương 🌷</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Font -->
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500&display=swap"
+      rel="stylesheet">
+
 
 <style>
+
+/* ==================================================
+   CÀI ĐẶT CHUNG
+================================================== */
+
 * {
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
+
     margin: 0;
+
     width: 100%;
     height: 100%;
+
     overflow: hidden;
 }
+
 
 body {
+
     font-family: "Montserrat", sans-serif;
+
     color: white;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    background: linear-gradient(
-        180deg,
-        #8bb8d8 0%,
-        #e8c9a7 52%,
-        #52783e 100%
-    );
+
+    /* BẦU TRỜI HOÀNG HÔN */
+
+    background:
+
+        linear-gradient(
+            to bottom,
+
+            #354b78 0%,
+
+            #665d86 25%,
+
+            #a8758c 45%,
+
+            #df9a78 63%,
+
+            #f1b66e 76%,
+
+            #587a3f 100%
+        );
 }
 
-/* BẦU TRỜI */
+
+/* ==================================================
+   BẦU TRỜI
+================================================== */
+
 .sky {
+
     position: fixed;
+
     inset: 0;
+
     overflow: hidden;
+
+    z-index: 1;
 }
 
-/* MÂY */
-.cloud {
+
+/* ==================================================
+   MẶT TRỜI
+================================================== */
+
+.sky::after {
+
+    content: "";
+
     position: absolute;
-    width: 180px;
-    height: 45px;
+
+    width: 280px;
+    height: 280px;
+
+    left: 50%;
+    top: 48%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+
+    background:
+
+        radial-gradient(
+            circle,
+
+            rgba(255,235,177,0.98)
+            0%,
+
+            rgba(255,201,125,0.75)
+            25%,
+
+            rgba(255,166,108,0.3)
+            55%,
+
+            transparent
+            72%
+        );
+
+
+    filter: blur(4px);
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* ==================================================
+   MÂY
+================================================== */
+
+.cloud {
+
+    position: absolute;
+
+    width: 190px;
+    height: 48px;
 
     border-radius: 50px;
 
-    background: rgba(255,255,255,0.25);
+
+    background:
+
+        rgba(
+            255,
+            235,
+            225,
+            0.20
+        );
+
 
     filter: blur(8px);
 
-    animation: cloudMove 55s linear infinite;
+
+    animation:
+
+        cloudMove
+        55s linear infinite;
+
+
+    z-index: 2;
 }
+
 
 .cloud::before,
 .cloud::after {
+
     content: "";
+
     position: absolute;
 
     background: inherit;
+
     border-radius: 50%;
 }
 
+
 .cloud::before {
-    width: 75px;
-    height: 75px;
+
+    width: 80px;
+    height: 80px;
 
     left: 35px;
+
     bottom: 0;
 }
+
 
 .cloud::after {
-    width: 55px;
-    height: 55px;
 
-    left: 90px;
+    width: 58px;
+    height: 58px;
+
+    left: 100px;
+
     bottom: 0;
 }
+
 
 @keyframes cloudMove {
 
     from {
-        transform: translateX(-250px);
+
+        transform:
+            translateX(-300px);
     }
 
     to {
-        transform: translateX(calc(100vw + 300px));
-    }
 
+        transform:
+            translateX(
+                calc(100vw + 350px)
+            );
+    }
 }
 
 
-/* CÁNH ĐỒNG */
+/* ==================================================
+   CÁNH ĐỒNG
+================================================== */
+
 .field {
 
     position: absolute;
 
-    left: -5%;
-    right: -5%;
-    bottom: -12%;
+    left: -10%;
+    right: -10%;
 
-    height: 48%;
+    bottom: -18%;
+
+    height: 55%;
+
 
     background:
-        repeating-linear-gradient(
-            8deg,
-            rgba(45,82,35,0.75) 0 5px,
-            rgba(84,122,57,0.72) 5px 12px
+
+        linear-gradient(
+            to top,
+
+            #244525 0%,
+
+            #315f2c 28%,
+
+            #4c7935 52%,
+
+            #769047 75%,
+
+            #a49b58 100%
         );
 
+
     transform:
-        perspective(350px)
-        rotateX(12deg);
+
+        perspective(600px)
+        rotateX(13deg)
+        scale(1.08);
+
+
+    transform-origin: bottom;
+
+    overflow: hidden;
+
+    z-index: 3;
 }
 
 
-/* HOA TULIP */
+/* ==================================================
+   LUỐNG CÂY / ĐƯỜNG TRÊN CÁNH ĐỒNG
+================================================== */
+
+.field::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+
+    background:
+
+        repeating-linear-gradient(
+
+            82deg,
+
+            transparent
+            0px,
+
+            transparent
+            40px,
+
+            rgba(
+                24,
+                63,
+                25,
+                0.25
+            )
+            42px,
+
+            rgba(
+                24,
+                63,
+                25,
+                0.25
+            )
+            49px,
+
+            transparent
+            51px,
+
+            transparent
+            88px
+        );
+
+
+    opacity: 0.7;
+}
+
+
+/* ==================================================
+   ÁNH SÁNG TRÊN ĐỒNG
+================================================== */
+
+.field::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+
+    background:
+
+        linear-gradient(
+
+            105deg,
+
+            rgba(
+                255,
+                181,
+                105,
+                0.28
+            ),
+
+            transparent 35%,
+
+            rgba(
+                255,
+                215,
+                140,
+                0.18
+            ) 65%,
+
+            transparent
+        );
+
+
+    pointer-events: none;
+}
+
+
+/* ==================================================
+   HOA TULIP
+================================================== */
+
 .flower {
 
     position: absolute;
 
+    z-index: 5;
+
     bottom: -10px;
 
-    font-size: 32px;
 
-    animation:
-        sway 3s ease-in-out infinite;
+    transform-origin:
+        bottom center;
 
-    transform-origin: bottom center;
 
     filter:
+
         drop-shadow(
-            0 5px 4px rgba(0,0,0,0.18)
+            0 4px 3px
+            rgba(
+                25,
+                40,
+                15,
+                0.35
+            )
         );
+
+
+    animation:
+
+        tulipSway
+        3.5s ease-in-out infinite;
 }
 
-@keyframes sway {
 
-    0%, 100% {
-        transform: rotate(-3deg);
+@keyframes tulipSway {
+
+    0%,
+    100% {
+
+        transform:
+
+            rotate(-2deg)
+            translateY(0);
     }
 
     50% {
-        transform: rotate(3deg);
-    }
 
+        transform:
+
+            rotate(2deg)
+            translateY(-2px);
+    }
 }
 
 
-/* KHUNG CHÍNH */
+/* Hoa xa */
+
+.flower.far {
+
+    opacity: 0.55;
+
+    filter:
+
+        blur(0.5px)
+
+        drop-shadow(
+            0 2px 2px
+            rgba(
+                25,
+                40,
+                15,
+                0.25
+                )
+        );
+}
+
+
+/* Hoa giữa */
+
+.flower.middle {
+
+    opacity: 0.85;
+}
+
+
+/* Hoa gần */
+
+.flower.front {
+
+    opacity: 1;
+
+    filter:
+
+        drop-shadow(
+            0 6px 5px
+            rgba(
+                20,
+                35,
+                10,
+                0.45
+            )
+        );
+}
+
+
+/* ==================================================
+   KHUNG CÂU HỎI
+================================================== */
+
 .card {
 
     position: relative;
 
-    z-index: 10;
+    z-index: 20;
 
-    width: min(88vw, 540px);
+    width:
+        min(
+            88vw,
+            560px
+        );
 
-    padding: 44px 28px;
+
+    padding:
+        45px 30px;
+
 
     text-align: center;
 
+
     border:
+
         1px solid
-        rgba(255,255,255,0.4);
+        rgba(
+            255,
+            255,
+            255,
+            0.42
+        );
+
 
     border-radius: 30px;
 
-    background:
-        rgba(54,63,47,0.23);
 
-    backdrop-filter: blur(9px);
+    background:
+
+        rgba(
+            55,
+            63,
+            48,
+            0.24
+        );
+
+
+    backdrop-filter:
+        blur(10px);
+
 
     box-shadow:
-        0 20px 70px
-        rgba(35,50,25,0.28);
+
+        0 25px 80px
+        rgba(
+            30,
+            40,
+            20,
+            0.3
+        );
 }
 
 
-/* DÒNG NHỎ */
+/* ==================================================
+   DÒNG NHỎ
+================================================== */
+
 .small {
 
     font-size: 12px;
 
     letter-spacing: 4px;
 
-    opacity: 0.82;
+    opacity: 0.85;
 
     margin-bottom: 18px;
 }
 
 
-/* CHỮ CHÍNH */
+/* ==================================================
+   CHỮ CHÍNH
+================================================== */
+
 #text {
 
-    min-height: 86px;
+    min-height: 90px;
+
 
     font-family:
+
         "Cormorant Garamond",
         Georgia,
-serif;
+        serif;
+
 
     font-size:
-        clamp(34px, 9vw, 52px);
+
+        clamp(
+            34px,
+            8vw,
+            54px
+        );
+
 
     font-weight: 500;
 
-    line-height: 1.15;
+    line-height: 1.12;
+
 
     text-shadow:
-        0 2px 15px
-        rgba(0,0,0,0.28);
+
+        0 3px 18px
+        rgba(
+            0,
+            0,
+            0,
+            0.3
+        );
 }
 
 
-/* CON TRỎ */
-.cursor {
+/* ==================================================
+   NÚT
+================================================== */
 
-    display: inline-block;
-
-    width: 2px;
-
-    height: 1em;
-
-    background: white;
-
-    margin-left: 4px;
-
-    vertical-align: -3px;
-
-    animation:
-        blink 0.7s infinite;
-}
-
-@keyframes blink {
-
-    50% {
-        opacity: 0;
-    }
-
-}
-
-
-/* NÚT */
 button {
 
-    margin-top: 26px;
+    margin-top: 27px;
 
-    padding: 13px 26px;
+    padding:
+        14px 28px;
+
 
     border:
+
         1px solid
-        rgba(255,255,255,0.55);
+        rgba(
+            255,
+            255,
+            255,
+            0.6
+        );
+
 
     border-radius: 999px;
 
+
     background:
-        rgba(255,255,255,0.16);
+
+        rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
+
 
     color: white;
+
 
     font-family:
         "Montserrat",
         sans-serif;
 
+
     font-size: 14px;
+
 
     cursor: pointer;
 
-    transition: 0.3s;
+
+    transition:
+        0.3s;
+
 
     box-shadow:
+
         0 5px 20px
-        rgba(0,0,0,0.12);
+        rgba(
+            0,
+            0,
+            0,
+            0.12
+        );
 }
+
 
 button:hover {
 
     background:
-        rgba(255,255,255,0.28);
+
+        rgba(
+            255,
+            255,
+            255,
+            0.28
+        );
+
 
     transform:
         translateY(-3px);
 }
 
 
-/* CÂU HỎI */
+/* ==================================================
+   CÂU HỎI SAU KHI BẤM
+================================================== */
+
 #question {
 
     display: none;
 
-    margin-top: 24px;
+    margin-top: 25px;
+
 
     font-family:
+
         "Cormorant Garamond",
         Georgia,
         serif;
-
     font-size:
-        clamp(25px, 6vw, 34px);
+
+        clamp(
+            25px,
+            6vw,
+            35px
+        );
+
 
     line-height: 1.45;
 
+
     text-shadow:
-        0 2px 12px
-        rgba(0,0,0,0.25);
+
+        0 3px 15px
+        rgba(
+            0,
+            0,
+            0,
+            0.3
+        );
+
+
+    animation:
+
+        questionAppear
+        1s ease;
 }
 
 
-/* HOA / TIM BAY */
+@keyframes questionAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ==================================================
+   HOA / TIM BAY LÊN
+================================================== */
+
 .heart {
 
     position: fixed;
 
-    z-index: 20;
+    z-index: 30;
 
     pointer-events: none;
 
+
     animation:
-        float 4s linear forwards;
+
+        floatUp
+        4s linear forwards;
 }
 
-@keyframes float {
+
+@keyframes floatUp {
 
     from {
 
         transform:
+
             translateY(0)
             scale(0.8);
 
         opacity: 0;
     }
 
+
     15% {
 
-        opacity: 0.9;
+        opacity: 1;
     }
+
 
     to {
 
         transform:
+
             translateY(-110vh)
             scale(1.3);
 
@@ -353,245 +809,6 @@ button:hover {
     }
 }
 
-</style>
-</head>
 
-
-<body>
-
-
-<!-- BẦU TRỜI -->
-
-<div
-    class="sky"
-    id="sky">
-</div>
-
-
-<!-- CÁNH ĐỒNG -->
-
-<div class="field"></div>
-
-
-<!-- KHUNG NỘI DUNG -->
-
-<main class="card">
-
-    <div class="small">
-
-        TÌM HIỂU CÔ NƯƠNG :3
-
-    </div>
-
-
-    <div>
-
-        <span id="text"></span>
-
-        <span class="cursor"></span>
-
-    </div>
-
-
-    <button id="btn">
-
-        Tớ muốn hỏi cô nương là 🌷
-
-    </button>
-
-
-    <div id="question">
-
-        🌷
-
-        <strong>
-            Hôm nay cô nương thế nào ?
-        </strong>
-
-        <br>
-
-        Có bị deadline dí nhìu hong ?
-
-    </div>
-
-</main>
-
-
-
-<script>
-
-
-/* =========================
-   TẠO MÂY
-========================= */
-
-const sky =
-    document.getElementById("sky");
-
-
-for (let i = 0; i < 5; i++) {
-
-    const cloud =
-        document.createElement("div");
-
-    cloud.className =
-        "cloud";
-
-    cloud.style.top =
-        (8 + Math.random() * 30) + "%";
-
-    cloud.style.left =
-        (Math.random() * 100) + "%";
-
-    cloud.style.animationDelay =
-        (-Math.random() * 40) + "s";
-
-    sky.appendChild(cloud);
-}
-
-
-
-/* =========================
-   TẠO HOA TULIP
-========================= */
-
-for (let i = 0; i < 75; i++) {
-
-    const flower =
-    document.createElement("div");
-
-    flower.className =
-        "flower";
-
-    flower.textContent =
-        "🌷";
-
-    flower.style.left =
-        Math.random() * 100 + "%";
-
-    flower.style.bottom =
-        (Math.random() * 25 - 5) + "%";
-
-    flower.style.fontSize =
-        (18 + Math.random() * 28) + "px";
-
-    flower.style.animationDuration =
-        (2 + Math.random() * 2) + "s";
-
-    flower.style.animationDelay =
-        (-Math.random() * 3) + "s";
-
-    flower.style.opacity =
-        0.55 + Math.random() * 0.45;
-
-    sky.appendChild(flower);
-}
-
-
-
-/* =========================
-   HIỆU ỨNG GÕ CHỮ
-========================= */
-
-const phrase =
-    "1.000.000 cái thơm má nè";
-
-let index = 0;
-
-
-function typeText() {
-
-    if (index < phrase.length) {
-
-        document.getElementById("text")
-            .textContent += phrase[index];
-
-        index++;
-
-        setTimeout(
-            typeText,
-            85
-        );
-    }
-
-}
-
-
-typeText();
-
-
-
-/* =========================
-   NÚT BẤM
-========================= */
-
-document.getElementById("btn")
-.onclick = () => {
-
-    document.getElementById("question")
-        .style.display = "block";
-
-
-    document.getElementById("btn")
-        .style.display = "none";
-
-
-    /* Tạo hoa / tim bay */
-
-    for (let j = 0; j < 12; j++) {
-
-        setTimeout(() => {
-
-            const heart =
-                document.createElement("div");
-
-            heart.className =
-                "heart";
-
-
-            heart.textContent =
-                [
-                    "🌷",
-                    "♡",
-                    "♥",
-                    "♡"
-                ][
-                    Math.floor(
-                        Math.random() * 4
-                    )
-                ];
-
-
-            heart.style.left =
-                (5 + Math.random() * 90) + "%";
-
-
-            heart.style.bottom =
-                "-20px";
-
-
-            heart.style.fontSize =
-                (14 + Math.random() * 20) + "px";
-
-
-            document.body.appendChild(
-                heart
-            );
-
-
-            setTimeout(() => {
-
-                heart.remove();
-
-            }, 4000);
-
-        }, j * 170);
-
-    }
-
-};
-
-</script>
-
-</body>
-</html>
+/* =================================
+    

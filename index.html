@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gửi cô nương 🌙</title>
+<title>Gửi cô nương 🌷</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -19,223 +23,470 @@ html, body {
 }
 
 body {
-    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-    background: radial-gradient(
-        circle at 50% 20%,
-        #25264a 0%,
-        #111225 42%,
-        #05060d 100%
-    );
+    font-family: "Montserrat", sans-serif;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background: linear-gradient(
+        180deg,
+        #8bb8d8 0%,
+        #e8c9a7 52%,
+        #52783e 100%
+    );
 }
 
-/* Bầu trời */
+/* BẦU TRỜI */
 .sky {
     position: fixed;
     inset: 0;
     overflow: hidden;
 }
 
-/* Những ngôi sao */
-.star {
+/* MÂY */
+.cloud {
     position: absolute;
-    width: 2px;
-    height: 2px;
-    border-radius: 50%;
-    background: white;
-    opacity: 0.65;
-    animation: twinkle 2.5s infinite ease-in-out;
+    width: 180px;
+    height: 45px;
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,0.25);
+
+    filter: blur(8px);
+
+    animation: cloudMove 55s linear infinite;
 }
 
-@keyframes twinkle {
-    50% {
-        opacity: 0.15;
-        transform: scale(0.6);
-    }
-}
-
-/* Mặt trăng */
-.moon {
-    position: absolute;
-    top: 9%;
-    right: 11%;
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: #fff8dc;
-    box-shadow: 0 0 35px #fff4b8;
-}
-
-.moon::after {
+.cloud::before,
+.cloud::after {
     content: "";
     position: absolute;
-    right: -7px;
-    top: -5px;
-    width: 72px;
-    height: 72px;
+
+    background: inherit;
     border-radius: 50%;
-    background: #121326;
 }
 
-/* Khung chính */
+.cloud::before {
+    width: 75px;
+    height: 75px;
+
+    left: 35px;
+    bottom: 0;
+}
+
+.cloud::after {
+    width: 55px;
+    height: 55px;
+
+    left: 90px;
+    bottom: 0;
+}
+
+@keyframes cloudMove {
+
+    from {
+        transform: translateX(-250px);
+    }
+
+    to {
+        transform: translateX(calc(100vw + 300px));
+    }
+
+}
+
+
+/* CÁNH ĐỒNG */
+.field {
+
+    position: absolute;
+
+    left: -5%;
+    right: -5%;
+    bottom: -12%;
+
+    height: 48%;
+
+    background:
+        repeating-linear-gradient(
+            8deg,
+            rgba(45,82,35,0.75) 0 5px,
+            rgba(84,122,57,0.72) 5px 12px
+        );
+
+    transform:
+        perspective(350px)
+        rotateX(12deg);
+}
+
+
+/* HOA TULIP */
+.flower {
+
+    position: absolute;
+
+    bottom: -10px;
+
+    font-size: 32px;
+
+    animation:
+        sway 3s ease-in-out infinite;
+
+    transform-origin: bottom center;
+
+    filter:
+        drop-shadow(
+            0 5px 4px rgba(0,0,0,0.18)
+        );
+}
+
+@keyframes sway {
+
+    0%, 100% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+
+}
+
+
+/* KHUNG CHÍNH */
 .card {
+
     position: relative;
-    width: min(88vw, 520px);
-    padding: 42px 28px;
+
+    z-index: 10;
+
+    width: min(88vw, 540px);
+
+    padding: 44px 28px;
+
     text-align: center;
 
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 28px;
+    border:
+        1px solid
+        rgba(255,255,255,0.4);
 
-    background: rgba(10,11,28,0.58);
-    backdrop-filter: blur(12px);
+    border-radius: 30px;
 
-    box-shadow: 0 20px 70px rgba(0,0,0,0.4);
+    background:
+        rgba(54,63,47,0.23);
+
+    backdrop-filter: blur(9px);
+
+    box-shadow:
+        0 20px 70px
+        rgba(35,50,25,0.28);
 }
 
+
+/* DÒNG NHỎ */
 .small {
-    font-size: 14px;
-    letter-spacing: 3px;
-    opacity: 0.65;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    opacity: 0.82;
+
     margin-bottom: 18px;
 }
 
-/* Chữ */
+
+/* CHỮ CHÍNH */
 #text {
-    min-height: 78px;
-    font-size: clamp(25px, 7vw, 38px);
-    line-height: 1.35;
+
+    min-height: 86px;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+serif;
+
+    font-size:
+        clamp(34px, 9vw, 52px);
+
+    font-weight: 500;
+
+    line-height: 1.15;
+
+    text-shadow:
+        0 2px 15px
+        rgba(0,0,0,0.28);
 }
 
+
+/* CON TRỎ */
 .cursor {
+
     display: inline-block;
+
     width: 2px;
+
     height: 1em;
+
     background: white;
+
     margin-left: 4px;
-    vertical-align: -2px;
-    animation: blink 0.7s infinite;
+
+    vertical-align: -3px;
+
+    animation:
+        blink 0.7s infinite;
 }
 
 @keyframes blink {
+
     50% {
         opacity: 0;
     }
+
 }
 
-/* Nút */
-button {
-    margin-top: 28px;
-    padding: 12px 25px;
 
-    border: 1px solid rgba(255,255,255,0.3);
+/* NÚT */
+button {
+
+    margin-top: 26px;
+
+    padding: 13px 26px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.55);
+
     border-radius: 999px;
 
-    background: rgba(255,255,255,0.08);
+    background:
+        rgba(255,255,255,0.16);
+
     color: white;
 
-    font-size: 16px;
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 14px;
+
     cursor: pointer;
 
     transition: 0.3s;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,0.12);
 }
 
 button:hover {
-    background: rgba(255,255,255,0.16);
-    transform: translateY(-2px);
+
+    background:
+        rgba(255,255,255,0.28);
+
+    transform:
+        translateY(-3px);
 }
 
-/* Câu hỏi */
+
+/* CÂU HỎI */
 #question {
+
     display: none;
-    margin-top: 25px;
-    font-size: 20px;
-    line-height: 1.6;
+
+    margin-top: 24px;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(25px, 6vw, 34px);
+
+    line-height: 1.45;
+
+    text-shadow:
+        0 2px 12px
+        rgba(0,0,0,0.25);
 }
 
-/* Tim / ký tự bay */
+
+/* HOA / TIM BAY */
 .heart {
+
     position: fixed;
+
+    z-index: 20;
+
     pointer-events: none;
-    animation: float 4s linear forwards;
+
+    animation:
+        float 4s linear forwards;
 }
 
 @keyframes float {
+
     from {
-        transform: translateY(0) scale(0.8);
+
+        transform:
+            translateY(0)
+            scale(0.8);
+
         opacity: 0;
     }
 
     15% {
+
         opacity: 0.9;
     }
 
     to {
-        transform: translateY(-110vh) scale(1.3);
+
+        transform:
+            translateY(-110vh)
+            scale(1.3);
+
         opacity: 0;
     }
 }
+
 </style>
 </head>
-<body>
-  <div class="sky" id="sky"></div>
 
-<div class="moon"></div>
+
+<body>
+
+
+<!-- BẦU TRỜI -->
+
+<div
+    class="sky"
+    id="sky">
+</div>
+
+
+<!-- CÁNH ĐỒNG -->
+
+<div class="field"></div>
+
+
+<!-- KHUNG NỘI DUNG -->
 
 <main class="card">
 
     <div class="small">
+
         MỘT CÂU HỎI NHỎ
+
     </div>
+
 
     <div>
+
         <span id="text"></span>
+
         <span class="cursor"></span>
+
     </div>
 
+
     <button id="btn">
-        Có một điều muốn hỏi cô nương ✨
+
+        Có một điều muốn hỏi cô nương 🌷
+
     </button>
 
+
     <div id="question">
-        🌙 <strong>Hôm nay cô nương thế nào?</strong>
+
+        🌷
+
+        <strong>
+            Hôm nay cô nương thế nào?
+        </strong>
+
         <br>
+
         Có chuyện gì vui thì kể tớ nghe với nhé.
+
     </div>
 
 </main>
 
+
+
 <script>
 
+
 /* =========================
-   TẠO SAO
+   TẠO MÂY
 ========================= */
 
-const sky = document.getElementById("sky");
+const sky =
+    document.getElementById("sky");
 
-for (let i = 0; i < 90; i++) {
 
-    const star = document.createElement("span");
+for (let i = 0; i < 5; i++) {
 
-    star.className = "star";
+    const cloud =
+        document.createElement("div");
 
-    star.style.left =
-        Math.random() * 100 + "%";
+    cloud.className =
+        "cloud";
 
-    star.style.top =
-        Math.random() * 100 + "%";
+    cloud.style.top =
+        (8 + Math.random() * 30) + "%";
 
-    star.style.animationDelay =
-        Math.random() * 3 + "s";
+    cloud.style.left =
+        (Math.random() * 100) + "%";
 
-    star.style.opacity =
-        0.25 + Math.random() * 0.75;
+    cloud.style.animationDelay =
+        (-Math.random() * 40) + "s";
 
-    sky.appendChild(star);
+    sky.appendChild(cloud);
 }
+
+
+
+/* =========================
+   TẠO HOA TULIP
+========================= */
+
+for (let i = 0; i < 75; i++) {
+
+    const flower =
+document.createElement("div");
+
+    flower.className =
+        "flower";
+
+    flower.textContent =
+        "🌷";
+
+    flower.style.left =
+        Math.random() * 100 + "%";
+
+    flower.style.bottom =
+        (Math.random() * 25 - 5) + "%";
+
+    flower.style.fontSize =
+        (18 + Math.random() * 28) + "px";
+
+    flower.style.animationDuration =
+        (2 + Math.random() * 2) + "s";
+
+    flower.style.animationDelay =
+        (-Math.random() * 3) + "s";
+
+    flower.style.opacity =
+        0.55 + Math.random() * 0.45;
+
+    sky.appendChild(flower);
+}
+
 
 
 /* =========================
@@ -247,6 +498,7 @@ const phrase =
 
 let index = 0;
 
+
 function typeText() {
 
     if (index < phrase.length) {
@@ -256,60 +508,93 @@ function typeText() {
 
         index++;
 
-        setTimeout(typeText, 85);
+        setTimeout(
+            typeText,
+            85
+        );
     }
+
 }
 
+
 typeText();
+
 
 
 /* =========================
    NÚT BẤM
 ========================= */
 
-document.getElementById("btn").onclick = () => {
+document.getElementById("btn")
+.onclick = () => {
 
     document.getElementById("question")
         .style.display = "block";
+
 
     document.getElementById("btn")
         .style.display = "none";
 
 
-    /* Tạo hiệu ứng bay */
+    /* Tạo hoa / tim bay */
 
-    for (let j = 0; j < 10; j++) {
+    for (let j = 0; j < 12; j++) {
 
         setTimeout(() => {
 
             const heart =
                 document.createElement("div");
 
-            heart.className = "heart";
+            heart.className =
+                "heart";
+
 
             heart.textContent =
-                ["♡", "✦", "♥"]
-                [Math.floor(Math.random() * 3)];
+                [
+                    "🌷",
+                    "♡",
+                    "✦",
+                    "♥"
+                ][
+                    Math.floor(
+                        Math.random() * 4
+                    )
+                ];
+
 
             heart.style.left =
-                (10 + Math.random() * 80) + "%";
+                (5 + Math.random() * 90) + "%";
 
-            heart.style.bottom = "-20px";
+
+            heart.style.bottom =
+                "-20px";
+
 
             heart.style.fontSize =
-                (14 + Math.random() * 18) + "px";
+                (14 + Math.random() * 20) + "px";
 
-            document.body.appendChild(heart);
+
+            document.body.appendChild(
+                heart
+            );
+
 
             setTimeout(() => {
+
                 heart.remove();
+
             }, 4000);
 
-        }, j * 180);
+        }, j * 170);
+
     }
 
 };
 
+</script>
+
+</body>
+</html>
 </script>
 
 </body>
